@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>足球世界杯 · 专题知识库 | cn-index-worldcup.com</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f4f5f7;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            color: #1d2b3a;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(135deg, #0b1926 0%, #1a2d3d 100%);
+            color: #e6edf5;
+            padding: 3.2rem 1.5rem 2.8rem;
+            text-align: center;
+            border-bottom: 4px solid #d4a843;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero .subhead {
+            font-size: 1.1rem;
+            font-weight: 300;
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto 0.5rem;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            margin-top: 0.8rem;
+            background: #2c4053;
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #c8d9e9;
+            border: 1px solid #3e5770;
+        }
+
+        /* 主内容容器 */
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 2.2rem 1.5rem 4rem;
+        }
+
+        /* 卡片网格 — 目录感布局 */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 2.8rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 1.8rem 1.6rem 2rem;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.04), 0 2px 6px rgba(0,0,0,0.02);
+            transition: transform 0.2s, box-shadow 0.25s;
+            border: 1px solid #e9edf2;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 28px rgba(0,0,0,0.08);
+        }
+
+        .card h2 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #132433;
+            border-left: 5px solid #d4a843;
+            padding-left: 0.7rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            margin-bottom: 0.7rem;
+            color: #2b3f52;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0.2rem;
+        }
+
+        .card li {
+            padding: 0.3rem 0;
+            font-size: 0.92rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .card li::before {
+            content: "▸";
+            color: #d4a843;
+            font-weight: 700;
+            position: absolute;
+            left: 0;
+        }
+
+        /* 强调色链接 */
+        a {
+            color: #b8862c;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s, color 0.2s;
+        }
+
+        a:hover {
+            color: #9c6f1e;
+            border-bottom-color: #b8862c;
+        }
+
+        /* 说明区（带背景色区分） */
+        .info-block {
+            background: #eef2f6;
+            border-radius: 20px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2.4rem;
+            border-left: 6px solid #d4a843;
+        }
+
+        .info-block h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            color: #112433;
+        }
+
+        .info-block p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* 提示区 — 带 icon 风格 */
+        .tip-area {
+            background: #faf8f3;
+            border-radius: 16px;
+            padding: 1.6rem 1.8rem;
+            margin-bottom: 2.8rem;
+            border: 1px solid #e3dac6;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .tip-icon {
+            font-size: 1.8rem;
+            line-height: 1;
+            color: #b8862c;
+            flex-shrink: 0;
+        }
+
+        .tip-content {
+            flex: 1;
+        }
+
+        .tip-content strong {
+            color: #132433;
+        }
+
+        .tip-content p {
+            margin: 0.3rem 0;
+        }
+
+        /* FAQ 摘要（简洁折叠风格） */
+        .faq-summary {
+            margin-top: 1.2rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #dce2e9;
+            padding: 0.9rem 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #1f3446;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .faq-q::before {
+            content: "Q";
+            background: #d4a843;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.75rem;
+            width: 1.3rem;
+            height: 1.3rem;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .faq-a {
+            margin-top: 0.3rem;
+            padding-left: 1.8rem;
+            color: #3c5468;
+            font-size: 0.92rem;
+        }
+
+        /* 相关信息区域 */
+        .related-links {
+            background: #ffffff;
+            padding: 1.8rem 2rem;
+            border-radius: 18px;
+            margin-top: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            border: 1px solid #e0e6ed;
+        }
+
+        .related-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: #112433;
+        }
+
+        .related-links ul {
+            columns: 2 220px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .related-links li {
+            padding: 0.25rem 0;
+            font-size: 0.92rem;
+        }
+
+        .related-links li::before {
+            content: "•";
+            color: #b8862c;
+            margin-right: 0.5rem;
+        }
+
+        .footer-note {
+            margin-top: 3rem;
+            font-size: 0.82rem;
+            color: #6a7f92;
+            text-align: center;
+            border-top: 1px solid #d6dfe7;
+            padding-top: 1.8rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero { padding: 2.4rem 1rem 2rem; }
+            .container { padding: 1.6rem 1rem 3rem; }
+            .grid-cards { gap: 1.2rem; }
+            .card { padding: 1.4rem; }
+            .related-links ul { columns: 1; }
+            .tip-area { flex-wrap: wrap; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 深色头图 -->
+<header class="hero">
+    <h1>⚽ 足球世界杯 · 知识库</h1>
+    <p class="subhead">赛事档案 · 可信指南 · 资源索引</p>
+    <span class="badge">基于 cn-index-worldcup.com 整理 · 信息聚合入口</span>
+</header>
+
+<div class="container">
+
+    <!-- 介绍 + 可信说明 (混合卡片) -->
+    <div class="grid-cards">
+        <div class="card">
+            <h2>关于本站</h2>
+            <p><a href="https://cn-index-worldcup.com">足球世界杯</a> 专题站点致力于提供与世界杯相关的结构化参考信息。内容覆盖历届赛事、球队数据、经典对决与观赛指引，帮助用户快速定位所需知识。</p>
+            <p>站点以索引形式组织，兼顾深度与可读性，适合爱好者、研究者及新球迷浏览。</p>
+        </div>
+
+        <div class="card">
+            <h2>可信说明</h2>
+            <p>本页所引述的信息均基于公开体育档案与官方赛事记录。实际赛程、举办时间、参赛队伍等信息请以国际足联（FIFA）及主办方公布为准。</p>
+            <p>我们不提供博彩或投注建议，所有内容仅供学习与参考。建议通过多渠道交叉验证关键数据。</p>
+        </div>
+    </div>
+
+    <!-- 说明区（更详细站点定位） -->
+    <div class="info-block">
+        <h3>📋 站点定位与使用场景</h3>
+        <p>「cn-index-worldcup」可视为一个轻量级的世界杯知识罗盘。无论你是在研究历届冠军演变、查找某届赛事的时间线，还是希望了解不同年代的比赛风格，这里都能提供清晰入口。</p>
+        <p>内容侧重中文语境，筛选并呈现高价值信息片段，降低信息过载。尤其适合赛期前后快速回顾或补充背景知识。</p>
+    </div>
+
+    <!-- 提示区 -->
+    <div class="tip-area">
+        <div class="tip-icon">💡</div>
+        <div class="tip-content">
+            <strong>浏览提示</strong>
+            <p>网站采用分类导航与标签系统，建议先浏览主目录再深入具体子页。部分外部链接会跳转到官方数据页或可靠体育媒体，请注意甄别时效性。</p>
+            <p style="margin-top:0.2rem;">如需深入讨论赛程细节，可搭配官方赛事手册或 FIFA 官网使用。</p>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 (围绕站点与可信) -->
+    <div class="faq-summary">
+        <div class="faq-item">
+            <div class="faq-q">这个站点会实时更新最新比赛结果吗？</div>
+            <div class="faq-a">本站以知识沉淀为主，不提供实时比分或直播功能。重大赛事期间可能会有摘要性更新，但建议通过实时体育平台获取即时数据。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">数据来源是否经过核实？</div>
+            <div class="faq-a">每个信息节点均标注参考来源（如 FIFA 官方记录、维基数据、权威体育媒体），但用户仍应自行核实关键事实。我们定期校对，但无法保证 100% 无延迟。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">如何快速找到某届世界杯的赛程表？</div>
+            <div class="faq-a">建议使用站内目录或搜索功能；若找不到可直接访问 <a href="https://cn-index-worldcup.com">足球世界杯</a> 首页，从「历届赛事」板块进入对应年份。</div>
+        </div>
+    </div>
+
+    <!-- 相关信息区 -->
+    <div class="related-links">
+        <h3>🔗 相关信息与延伸资源</h3>
+        <ul>
+            <li>历届冠军与决赛比分</li>
+            <li>世界杯历史射手榜</li>
+            <li>举办国与场馆档案</li>
+            <li>经典比赛回顾（1950–2022）</li>
+            <li>预选赛制与名额分配</li>
+            <li>裁判与规则演变简史</li>
+            <li>世界杯用球与奖杯沿革</li>
+            <li>相关书籍与纪录片推荐</li>
+        </ul>
+        <p style="margin-top:1rem; font-size:0.9rem; color:#3f5a70;">更多内容持续整理中，欢迎通过站点反馈渠道提出建议。指向 <a href="https://cn-index-worldcup.com">足球世界杯</a> 的页面会定期扩充。</p>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        知识库入口 · 仅供学习参考 · 内容以公开信息为基础 · 请自行核实关键数据
+    </div>
+
+</div>
+
+</body>
+</html>
