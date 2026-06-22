@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ued体育 · 产品说明</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #f3f5f7;
+      color: #2c3e50;
+      line-height: 1.65;
+      padding: 2.5rem 1rem;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* 卡片通用设计 */
+    .card {
+      background: #ffffff;
+      border: 1px solid #e3e7ec;
+      border-radius: 18px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.02);
+      padding: 2rem 2rem 2.2rem;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06), 0 4px 8px rgba(0, 0, 0, 0.02);
+    }
+
+    /* 标题层级 */
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 0.6rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      border-left: 5px solid #2f6f9f;
+      padding-left: 1rem;
+      margin-bottom: 1.2rem;
+      color: #1f3b4f;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 480;
+      margin-bottom: 0.5rem;
+      color: #2c4b64;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    /* 链接样式 */
+    a {
+      color: #1f6390;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    a:hover {
+      border-bottom-color: #1f6390;
+      color: #0b3b5a;
+    }
+
+    /* hero 区域 */
+    .hero {
+      text-align: left;
+      margin-bottom: 2.8rem;
+    }
+
+    .hero .sub {
+      color: #5e6f7e;
+      font-size: 1.05rem;
+      max-width: 75%;
+    }
+
+    @media (max-width: 640px) {
+      .hero .sub {
+        max-width: 100%;
+      }
+    }
+
+    /* 网格布局 */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+      margin-bottom: 2.4rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.8rem;
+      margin-bottom: 2.4rem;
+    }
+
+    @media (max-width: 780px) {
+      .grid-2, .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* 亮点列表（无符号） */
+    .feature-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .feature-list li {
+      padding: 0.5rem 0 0.5rem 0;
+      border-bottom: 1px solid #f0f2f4;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+
+    .feature-list li::before {
+      content: "▹";
+      color: #2f6f9f;
+      font-weight: 500;
+    }
+
+    /* 场景/使用建议卡片内小标签 */
+    .tag {
+      display: inline-block;
+      background: #eef2f6;
+      border-radius: 30px;
+      padding: 0.1rem 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 470;
+      color: #2c577a;
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.01em;
+    }
+
+    /* faq 摘要样式 */
+    .faq-item {
+      padding: 1rem 0;
+      border-bottom: 1px solid #e8ecf0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 520;
+      margin-bottom: 0.25rem;
+      color: #1f3f57;
+    }
+
+    .faq-item p {
+      margin-bottom: 0;
+      color: #3f5566;
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      background: transparent;
+      border: 1px solid #b6c9db;
+      border-radius: 40px;
+      padding: 0.3rem 1.5rem;
+      font-size: 0.9rem;
+      color: #1f6390;
+      transition: background 0.15s, border-color 0.15s;
+      margin-top: 0.3rem;
+    }
+
+    .btn-ghost:hover {
+      background: #e9f0f7;
+      border-color: #8fb0cc;
+    }
+
+    /* 提醒卡片（可信但克制） */
+    .reminder {
+      background: #f9fafc;
+      border: 1px solid #d0dbe6;
+      border-radius: 18px;
+      padding: 1.8rem 2rem;
+      margin: 2.2rem 0 1.8rem;
+    }
+
+    .reminder p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 底部 */
+    .footer-note {
+      font-size: 0.85rem;
+      color: #6a7c8b;
+      border-top: 1px solid #dde2e8;
+      padding-top: 1.8rem;
+      margin-top: 2.2rem;
+      text-align: center;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 480px) {
+      body {
+        padding: 1.5rem 0.8rem;
+      }
+      .card {
+        padding: 1.5rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- hero 简明指南式开头 -->
+  <div class="hero">
+    <h1>ued体育 · 简明产品说明</h1>
+    <p class="sub">
+      从使用场景到功能亮点，一份克制的介绍。适合希望快速了解 <a href="https://ssl-uedsports.com">ued体育</a> 整体定位的用户。
+    </p>
+  </div>
+
+  <!-- 摘要卡片：整体说明 -->
+  <div class="card" style="margin-bottom: 2.4rem;">
+    <h2>概览摘要</h2>
+    <p>ued体育 围绕运动数据与信息整合，提供结构化的体育内容聚合与基础数据服务。平台以简洁的界面和分类逻辑，帮助使用者浏览赛事信息、队伍动态与赛果摘要。区别于泛资讯平台，ued体育 更强调信息排列的可用性与低干扰阅读体验，适合日常快速获取体育相关动态。</p>
+    <p style="margin-bottom: 0;">服务范围覆盖多类主流运动项目，数据来源经基础校验与筛选，整体偏向实用导向。下述内容将从特点、使用建议、注意事项等角度进一步说明。</p>
+  </div>
+
+  <!-- 两列：亮点 + 使用建议 -->
+  <div class="grid-2">
+    <!-- 亮点卡片 -->
+    <div class="card">
+      <h2>主要特点</h2>
+      <ul class="feature-list">
+        <li><strong>归类清晰：</strong>赛事、联赛、队伍按层级组织，减少信息过载。</li>
+        <li><strong>数据整合：</strong>赛果、赛程、基础统计聚合在同一框架下，避免多平台切换。</li>
+        <li><strong>界面克制：</strong>无过度动效与干扰元素，重点突出内容本身。</li>
+        <li><strong>适度更新：</strong>关键比赛与联赛数据保持常规刷新，滞后在合理范围。</li>
+        <li><strong>低门槛使用：</strong>无需注册即可浏览大部分公开内容，降低使用成本。</li>
+      </ul>
+      <p style="font-size: 0.9rem; margin-top: 0.8rem; color: #4d6578;">注：信息公开程度与数据范围可能随平台调整而变化。</p>
+    </div>
+
+    <!-- 使用建议卡片（简明指南角度） -->
+    <div class="card">
+      <h2>使用建议</h2>
+      <div style="margin-bottom: 1.2rem;">
+        <span class="tag">日常浏览</span>
+        <p style="font-size: 0.96rem;">直接访问 <a href="https://ssl-uedsports.com">ued体育</a> 首页即可查看当前热门赛事与导航分类，适合快速扫视。</p>
+      </div>
+      <div style="margin-bottom: 1.2rem;">
+        <span class="tag">信息筛选</span>
+        <p style="font-size: 0.96rem;">利用侧边或顶部分类菜单缩小范围，聚焦特定联赛或队伍。建议优先使用「赛程」与「结果」切换模块。</p>
+      </div>
+      <div>
+        <span class="tag">参考而非决策</span>
+        <p style="font-size: 0.96rem;">平台数据仅作一般参考，不构成投注、交易或任何决策依据。请结合多方来源综合判断。</p>
+      </div>
+      <div style="margin-top: 1rem; padding-top: 0.8rem; border-top: 1px solid #eef2f6;">
+        <span class="tag">网络环境</span>
+        <p style="font-size: 0.96rem;">部分区域可能需要稳定的网络连接，建议使用常规宽带或移动网络访问。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 三列：使用场景卡片（产品说明式） -->
+  <div class="grid-3">
+    <div class="card">
+      <h3>赛前信息查阅</h3>
+      <p>浏览即将开始的比赛时间、对阵双方及联赛背景。页面以列表形式呈现，便于快速比较。</p>
+      <p style="font-size: 0.88rem; color: #57728b;">适合：赛前简单了解对阵概况。</p>
+    </div>
+    <div class="card">
+      <h3>赛后结果回溯</h3>
+      <p>查看已结束赛事的最终比分以及基础统计，无需等待第三方汇总。数据更新遵循平台自身节奏。</p>
+      <p style="font-size: 0.88rem; color: #57728b;">适合：错过直播后快速知晓赛果。</p>
+    </div>
+    <div class="card">
+      <h3>联赛/队伍追踪</h3>
+      <p>通过固定分类持续关注特定联赛或队伍，减少重复搜索。部分页面支持简易排序与过滤。</p>
+      <p style="font-size: 0.88rem; color: #57728b;">适合：有固定关注联赛或队伍的用户。</p>
+    </div>
+  </div>
+
+  <!-- 提醒区域（可信但克制） -->
+  <div class="reminder">
+    <h2 style="border-left-color: #7f99b2; margin-bottom: 0.6rem;">访问提醒</h2>
+    <p><strong>平台性质：</strong>ued体育 是一个体育信息聚合类站点，不提供投注、博彩或金融相关服务。页面内容仅代表信息整合，不构成任何形式的推荐或诱导。</p>
+    <p><strong>数据可靠性：</strong>平台尽力保证信息准确，但无法完全避免延迟或偶发错误。关键数据建议交叉验证。</p>
+    <p><strong>使用边界：</strong>用户应自行判断信息用途。请遵守所在地法律法规，合理使用服务。</p>
+  </div>
+
+  <!-- FAQ 摘要卡片 (简洁3问) -->
+  <div class="card" style="margin-bottom: 2.2rem;">
+    <h2>常见问题摘要</h2>
+    <div class="faq-item">
+      <strong>是否需要注册账号？</strong>
+      <p>大部分内容可直接浏览，部分个性化功能（如收藏、偏好设置）可能需注册。以平台实际页面提示为准。</p>
+    </div>
+    <div class="faq-item">
+      <strong>数据覆盖哪些运动？</strong>
+      <p>主要覆盖足球、篮球、网球、棒球等主流项目，具体范围随赛季与数据源调整。</p>
+    </div>
+    <div class="faq-item">
+      <strong>信息更新频率如何？</strong>
+      <p>赛果与赛程按常规节奏更新，实时性因赛事级别而异。重大赛事通常优先更新。</p>
+    </div>
+    <div style="text-align: right; margin-top: 0.6rem;">
+      <span class="btn-ghost">更多细节可自行探索</span>
+    </div>
+  </div>
+
+  <!-- 再次自然嵌入链接（避免机械重复） -->
+  <p style="margin-top: 0.2rem; margin-bottom: 1.2rem; color: #3f5566; font-size: 0.95rem;">
+    如希望直接体验，可从 <a href="https://ssl-uedsports.com">ued体育</a> 首页开始。建议先浏览公开分类，再决定是否深入使用附加功能。
+  </p>
+
+  <!-- 底部 -->
+  <div class="footer-note">
+    <span>本页面为产品说明式介绍，仅供参考 · 内容基于一般认知与平台公开特征</span>
+  </div>
+
+</div>
+</body>
+</html>
